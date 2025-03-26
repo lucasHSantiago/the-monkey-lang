@@ -478,6 +478,10 @@ func TestFunctionLiteralParsing(t *testing.T) {
 
 	function, ok := stmt.Expression.(*ast.FunctionLiteral)
 	if !ok {
+		t.Fatalf("stmt.Expression is not a FunctionLiteral")
+	}
+
+	if len(function.Parameters) != 2 {
 		t.Fatalf("function literal parameters wrong. want 2, got=%d\n", len(function.Parameters))
 	}
 
