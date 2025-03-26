@@ -1,8 +1,6 @@
 package evaluator
 
 import (
-	"fmt"
-
 	"github.com/lucasHSantiago/the-monkey-lang/ast"
 	"github.com/lucasHSantiago/the-monkey-lang/object"
 )
@@ -12,18 +10,6 @@ var (
 	TRUE  = &object.Boolean{Value: true}
 	FALSE = &object.Boolean{Value: false}
 )
-
-func newError(format string, a ...any) *object.Error {
-	return &object.Error{Message: fmt.Sprintf(format, a...)}
-}
-
-func isError(obj object.Object) bool {
-	if obj != nil {
-		return obj.Type() == object.ERROR_OBJ
-	}
-
-	return false
-}
 
 func Eval(node ast.Node, env *object.Environment) object.Object {
 	switch node := node.(type) {
@@ -139,14 +125,6 @@ func evalBlockStatement(block *ast.BlockStatement, env *object.Environment) obje
 	}
 
 	return result
-}
-
-func nativeBoolToBooleanObject(input bool) *object.Boolean {
-	if input {
-		return TRUE
-	}
-
-	return FALSE
 }
 
 func evalPrefixExpression(operator string, right object.Object) object.Object {
@@ -301,17 +279,4 @@ func unwrapReturnValue(obj object.Object) object.Object {
 	}
 
 	return obj
-}
-
-func isTruthy(obj object.Object) bool {
-	switch obj {
-	case NULL:
-		return false
-	case TRUE:
-		return true
-	case FALSE:
-		return false
-	}
-
-	return true
 }
