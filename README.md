@@ -1,3 +1,7 @@
+# The Monkey Programming Language
+
+written in Go.
+
 ## List of features:
 - C-like syntax
 - variable bindings
