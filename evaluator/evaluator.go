@@ -3,6 +3,7 @@ package evaluator
 import (
 	"github.com/lucasHSantiago/the-monkey-lang/ast"
 	"github.com/lucasHSantiago/the-monkey-lang/object"
+	"golang.org/x/tools/go/analysis/passes/ifaceassert"
 )
 
 var (
